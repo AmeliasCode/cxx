@@ -7,7 +7,7 @@
 """Rules for defining repositories for remote `crates_vendor` repositories"""
 
 # buildifier: disable=bzl-visibility
-load("@//third-party/bazel:defs.bzl", _crate_repositories = "crate_repositories")
+load("//third-party/bazel:defs.bzl", _crate_repositories = "crate_repositories")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 
 # buildifier: disable=bzl-visibility
@@ -22,8 +22,8 @@ def crate_repositories():
     maybe(
         crates_vendor_remote_repository,
         name = "vendor",
-        build_file = Label("@//third-party/bazel:BUILD.bazel"),
-        defs_module = Label("@//third-party/bazel:defs.bzl"),
+        build_file = Label("//third-party/bazel:BUILD.bazel"),
+        defs_module = Label("//third-party/bazel:defs.bzl"),
     )
 
     direct_deps = [struct(repo = "vendor", is_dev_dep = False)]
