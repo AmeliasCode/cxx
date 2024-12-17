@@ -2,16 +2,11 @@ module(name = "cxx.rs")
 
 bazel_dep(name = "rules_cc", version = "0.0.9")
 bazel_dep(name = "bazel_skylib", version = "1.7.1")
-bazel_dep(name = "rules_rust", version = "0.46.0")
-git_override(
-    module_name = "rules_rust",
-    commit = "3cf8ca90c1a16d1ccd586cbd01bc0a750ec20cbb",
-    remote = "https://github.com/AmeliasCode/rules_rust.git"
-)
+bazel_dep(name = "rules_rust", version = "0.56.0")
 
 rust = use_extension("@rules_rust//rust:extensions.bzl", "rust")
 rust.toolchain(
-    versions = ["1.79.0"],
+    versions = ["1.83.0"],
 )
 use_repo(rust, "rust_toolchains")
 
